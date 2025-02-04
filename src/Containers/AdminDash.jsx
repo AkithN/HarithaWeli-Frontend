@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminDash = () => {
   return (
-    <div className="bg-gray-800 min-h-screen text-white">
+    <div className="bg-[#10172F] min-h-screen text-white">
       {/* Your content here */}
     </div>
   )
