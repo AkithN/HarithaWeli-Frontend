@@ -66,12 +66,8 @@ const AdminDash = () => {
 
   return (
     <div className="flex-1 p-12 bg-[#10172F] min-h-screen text-white">
-<<<<<<< Updated upstream
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-=======
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
->>>>>>> Stashed changes
         {stats.map((stat, index) => (
           <div
             key={index}
@@ -86,32 +82,28 @@ const AdminDash = () => {
         ))}
       </div>
 
+      {/* Product Stock Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {products.map((product, index) => (
           <div
             key={index}
             className="bg-[#0A1025] p-4 rounded-lg shadow transform transition-transform hover:-translate-y-2 hover:shadow-lg relative overflow-visible"
           >
-<<<<<<< Updated upstream
-            <img src={product.img} alt={product.name} className="w-24 h-24 mb-4 mx-auto object-contain" />
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p className={`${product.color} text-sm`}>Available Stock: {product.stock}</p>
-=======
             <img
               src={product.img}
               alt={product.name}
-              className="absolute top-[-60px] left-1/4 transform -translate-x-1/2 w-30 h-34 object-contain"
+              className="absolute top-[-60px] left-1/4 transform -translate-x-1/2 w-34 h-34 object-contain"
             />
-            <div className="ml-auto text-right pt-16">
-              <h3 className="text-lg font-semibold text-center">{product.name}</h3>
-              <p className={`text-center ${product.color} text-sm`}>Available Stock</p>
-              <p className={`text-center ${product.color} font-bold text-lg`}>{product.stock}</p>
+            <div className="pt-16">
+              <h3 className="text-lg font-semibold text-right">{product.name}</h3>
+              <p className={`text-right ${product.color} text-sm`}>Available Stock</p>
+              <p className={`text-right ${product.color} font-bold text-lg`}>{product.stock}</p>
             </div>
->>>>>>> Stashed changes
           </div>
         ))}
       </div>
 
+      {/* Chart Section */}
       <div className="bg-[#0A1025] p-6 rounded-lg shadow-lg w-full max-w-2.5xl mx-auto">
         <h2 className="text-xl font-semibold mb-4">Sales vs Receivable</h2>
         <div className="h-[300px]">
@@ -123,4 +115,5 @@ const AdminDash = () => {
 };
 
 export default AdminDash;
+
 
