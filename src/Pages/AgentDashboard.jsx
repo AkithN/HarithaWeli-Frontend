@@ -1,7 +1,8 @@
 import React from 'react';
 import AdminNavbar from '../Components/AdminNavbar';
 import AdminSideBar from '../Components/AdminSideBar';
-import AdminDash from '../Containers/AdminDash';
+import AgentDash from '../Containers/AgentDash';
+
 
 const AgentDashboard = () => {
 return (
@@ -12,7 +13,7 @@ return (
         <AdminNavbar />
 
         <div className="ml-0 mt-0 ">
-          <AdminDash />
+          <AgentDash />
         </div>
      </div>
    </div>

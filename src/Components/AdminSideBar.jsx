@@ -58,7 +58,7 @@ const AdminSideBar = () => {
           </li>
           <li>
             <Link
-              to="/stock"
+              to="/agent-stock"
               className="flex items-center gap-3 cursor-pointer hover:text-red-500"
             >
               <DatabaseOutlined className="text-xl" />
