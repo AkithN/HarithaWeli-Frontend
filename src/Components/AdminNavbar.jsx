@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { UserOutlined, BellOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import logo from "../Assets/logo.png";
 import avatar from "../Assets/avatar.jpg";
@@ -8,7 +9,7 @@ const AdminNavbar = () => {
     <nav className="bg-[#0A1025] text-white px-6 py-5 flex items-center justify-between shadow-lg fixed top-0 left-0 w-full">
       <div className="flex items-center gap-40">
         <img src={logo} alt="Logo" className="h-15 w-auto px-10" />
-        
+
         <span className="text-lg font-semibold flex items-center gap-2">
           <UserOutlined className="text-xl" />
           SUPER ADMIN
@@ -24,11 +25,13 @@ const AdminNavbar = () => {
 
         <BellOutlined className="text-xl cursor-pointer" />
 
-        <img
-          src={ avatar }
-          alt="Profile"
-          className="w-10 h-10 rounded-full border-2 border-gray-500"
-        />
+        <img src={avatar} alt="Profile" className="w-10 h-10 rounded-full border-2 border-gray-500" />
+
+        {/* Navigation Links */}
+        <div className="flex gap-4">
+          <Link to="/admin" className="hover:text-gray-400">Admin</Link>
+          <Link to="/call-center" className="hover:text-gray-400">Call Center</Link>
+        </div>
       </div>
     </nav>
   );
