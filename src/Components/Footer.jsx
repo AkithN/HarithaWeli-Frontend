@@ -1,7 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa";
 import Logo from "../Assets/logo.png";
-import PaymentIcons from "../Assets/ITI.png";
 import SL from "../Assets/sl.png";
 import ITI from "../Assets/ITI.png";
 
@@ -68,7 +67,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 border-t">
-        <p>© 2024 <span className="font-semibold text-black">Harithaweli</span>. All Rights Reserved</p>
+        <p>© 2025 <span className="font-semibold text-black">Harithaweli</span>. All Rights Reserved</p>
       </div>
     </footer>
   );
