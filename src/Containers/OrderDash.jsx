@@ -9,9 +9,9 @@ const OrderDash = () => {
   ];
 
   return (
-    <div className="flex-1 p-12 bg-[#10172F] min-h-screen text-white">
+    <div className="flex-5 p-12 bg-[#10172F] min-h-screen text-white mt-4">
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
           <div
             key={index}
@@ -30,3 +30,4 @@ const OrderDash = () => {
 };
 
 export default OrderDash;
+

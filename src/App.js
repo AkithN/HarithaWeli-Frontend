@@ -6,6 +6,7 @@ import CallCenterDashboard from "./Pages/CallCenterDashboard";
 import AgentStock from "./Pages/AgentStock";
 import AgentDashboard from "./Pages/AgentDashboard";
 
+
 function App() {
   return (
     <Routes>
@@ -14,6 +15,8 @@ function App() {
       <Route path="/call-center" element={<CallCenterDashboard />} />
       <Route path="/agent-stock" element={<AgentStock />} />
       <Route path="/agent-dashboard" element={<AgentDashboard />} />
+      <Route path="/order" element={<OrderDashboard />} />
+
     </Routes>
   );
 }
