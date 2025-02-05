@@ -13,11 +13,12 @@ import {
   QuestionCircleOutlined,
   MailOutlined,
   LogoutOutlined,
+  ShoppingCartOutlined, // Added Sale icon
 } from "@ant-design/icons";
 
 const AdminSideBar = () => {
   return (
-    <div className="bg-[#0A1025] h-500 w-80 py-10 px-10 text-white flex flex-col justify-between">
+    <div className="bg-[#0A1025] h-screen w-80 py-10 px-10 text-white flex flex-col justify-between">
       <div>
         <ul className="space-y-6">
           <li>
@@ -36,6 +37,15 @@ const AdminSideBar = () => {
             >
               <PhoneOutlined className="text-xl" />
               Call Center
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/sale"
+              className="flex items-center gap-3 cursor-pointer hover:text-red-500"
+            >
+              <ShoppingCartOutlined className="text-xl" />
+              Sale
             </Link>
           </li>
           <li>
