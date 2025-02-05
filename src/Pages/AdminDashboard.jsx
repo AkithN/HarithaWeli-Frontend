@@ -11,7 +11,7 @@ const AdminDashboard = () => {
       <div className="flex flex-col w-full">
         <AdminNavbar />
 
-        <div className="ml-0 mt-0 ">
+        <div >
           <AdminDash />
         </div>
       </div>

@@ -26,12 +26,6 @@ const AdminNavbar = () => {
         <BellOutlined className="text-xl cursor-pointer" />
 
         <img src={avatar} alt="Profile" className="w-10 h-10 rounded-full border-2 border-gray-500" />
-
-        {/* Navigation Links */}
-        <div className="flex gap-4">
-          <Link to="/admin" className="hover:text-gray-400">Admin</Link>
-          <Link to="/call-center" className="hover:text-gray-400">Call Center</Link>
-        </div>
       </div>
     </nav>
   );
