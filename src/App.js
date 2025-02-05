@@ -5,6 +5,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import CallCenterDashboard from "./Pages/CallCenterDashboard";
 import AgentStock from "./Pages/AgentStock";
 import AgentDashboard from "./Pages/AgentDashboard";
+import OrderDashboard from "./Pages/OrderDashboard";
 
 
 function App() {
