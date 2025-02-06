@@ -23,11 +23,11 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <a href="#" className="hover:text-white">
+          <a href="/Login" className="hover:text-white">
             Log in
           </a>
           <span className="text-gray-500">or</span>
-          <a href="#" className="hover:text-white">
+          <a href="/Register" className="hover:text-white">
             Create an account
           </a>
           <FiSearch className="text-lg ml-4 cursor-pointer hover:text-white" />
@@ -43,19 +43,22 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-80 py-4">
         <img src={headerLogo} alt="HeaderLogo" className="h-20 w-auto" />
         <nav className="flex items-center space-x-8 font-semibold uppercase text-black">
-          <a href="#" className="text-[#55C2C3]">
+        <a href="/" className="hover:text-[#55C2C3]">
             HOME
           </a>
-          <a href="#" className="hover:text-[#55C2C3]">
+          <a href="/productCal" className="hover:text-[#55C2C3]">
             CAL
           </a>
-          <a href="#" className="hover:text-[#55C2C3]">
+          <a href="/E-Shop" className="hover:text-[#55C2C3]">
             E-Shop
           </a>
-          <a href="#" className="hover:text-[#55C2C3]">
+          <a href="/Projects" className="hover:text-[#55C2C3]">
             PROJECTS
           </a>
-          <a href="#" className="hover:text-[#55C2C3]">
+          <a href="/About" className="hover:text-[#55C2C3]">
+            ABOUT US
+          </a>
+          <a href="/Account" className="hover:text-[#55C2C3]">
             ACCOUNT
           </a>
         </nav>
