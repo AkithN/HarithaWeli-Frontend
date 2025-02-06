@@ -1,7 +1,6 @@
 import React from "react";
 import {
     ShoppingCartOutlined,
-    DollarCircleOutlined,
     TeamOutlined,
     UndoOutlined,
 } from "@ant-design/icons";
@@ -11,10 +10,7 @@ const CallCenterDash = () => {
         <div className="bg-[#0A1025] min-h-screen text-white p-10">
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-2xl font-bold">Call Center Dashboard</h1>
-                <div className="flex items-center gap-3">
-                    <span className="text-green-500">● Live Status</span>
-                    <span className="text-gray-300">10:00 PM</span>
-                </div>
+               
             </div>
 
             {/* Metrics Section */}
