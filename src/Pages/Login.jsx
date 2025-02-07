@@ -1,85 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
+import React from "react";
+import { FaGoogle, FaFacebook, FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
 
-const LoginPage = () => {
-  const [isDark, setIsDark] = useState(false);
-  const [isLogin, setIsLogin] = useState(true); // Tracks whether we're in login or register mode
+const Login = ({ isOpen, onClose }) => {
+  const [showPassword, setShowPassword] = React.useState(false);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = isDark ? "light" : "dark";
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
-  };
-
-  const switchForm = () => {
-    setIsLogin(!isLogin);
-  };
+  if (!isOpen) return null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-100 dark:bg-gray-900 transition-colors duration-500">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient blur-3xl opacity-30"></div>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md z-50">
+      <div className="bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-2xl p-6 w-full max-w-md relative">
+        {/* Close Button */}
+        <button className="absolute top-3 right-3 text-white text-xl" onClick={onClose}>
+          <FaTimes />
+        </button>
 
-      <div className="relative p-8 bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl shadow-lg max-w-md w-full border border-white border-opacity-20 dark:bg-gray-800 dark:border-gray-700">
-        <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-          {isLogin ? "Login" : "Register"}
-        </h2>
-        <form className="space-y-6">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Username"
-              className="w-full px-4 py-3 rounded-full bg-white bg-opacity-20 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="relative">
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full px-4 py-3 rounded-full bg-white bg-opacity-20 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          {!isLogin && (
-            <div className="relative">
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full px-4 py-3 rounded-full bg-white bg-opacity-20 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-          )}
-          <button
-            type="submit"
-            className="w-full py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold transition transform hover:scale-105 focus:ring-4 focus:ring-blue-300 focus:outline-none"
-          >
-            {isLogin ? "Login" : "Register"}
+        <h2 className="text-2xl font-semibold text-white text-center">Welcome Back!</h2>
+        <p className="text-sm text-gray-300 text-center">Enter your details below to sign in</p>
+
+        {/* Social Login Buttons */}
+        <div className="flex gap-4 mt-4">
+          <button className="flex-1 flex items-center justify-center gap-2 bg-white bg-opacity-20 text-white py-2 px-4 rounded-md hover:bg-opacity-30 transition">
+            <FaGoogle /> Continue Google
           </button>
-        </form>
-        <div className="text-center mt-6">
-          <a href="#" onClick={switchForm} className="text-blue-400 hover:underline">
-            {isLogin ? "Switch to Register" : "Switch to Login"}
-          </a>
+          <button className="flex-1 flex items-center justify-center gap-2 bg-white bg-opacity-20 text-white py-2 px-4 rounded-md hover:bg-opacity-30 transition">
+            <FaFacebook /> Continue Facebook
+          </button>
         </div>
-        <div className="absolute top-4 right-4 flex items-center cursor-pointer" onClick={toggleTheme}>
-          <FaSun className={`text-2xl ${!isDark ? "text-yellow-400" : "text-gray-500"}`} />
-          <FaMoon className={`text-2xl ml-2 ${isDark ? "text-blue-400" : "text-gray-500"}`} />
+
+        {/* OR Separator */}
+        <div className="flex items-center my-4 text-gray-400">
+          <hr className="flex-grow border-gray-500" />
+          <span className="mx-2">or</span>
+          <hr className="flex-grow border-gray-500" />
         </div>
+
+        {/* Email Input */}
+        <div className="mb-3">
+          <label className="text-white text-sm">Email</label>
+          <input
+            type="email"
+            className="w-full p-2 mt-1 rounded-md bg-gray-700 bg-opacity-40 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        {/* Password Input */}
+        <div className="mb-3 relative">
+          <label className="text-white text-sm">Password</label>
+          <input
+            type={showPassword ? "text" : "password"}
+            className="w-full p-2 mt-1 rounded-md bg-gray-700 bg-opacity-40 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter Password"
+          />
+          <button
+            type="button"
+            className="absolute right-3 top-10 text-gray-300"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
+        </div>
+
+        {/* Forgot Password */}
+        <div className="text-right mb-3">
+          <a href="#" className="text-blue-400 text-sm hover:underline">Forgot Password?</a>
+        </div>
+
+        {/* Login Button */}
+        <button className="w-full bg-blue-600 text-white py-2 rounded-md text-lg font-semibold hover:bg-blue-700 transition">
+          Login
+        </button>
+
+        {/* Signup Link */}
+        <p className="text-center text-gray-300 mt-3">
+          Don’t have an account? <a href="#" className="text-blue-400 hover:underline">Sign Up</a>
+        </p>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
-
-
+export default Login;
