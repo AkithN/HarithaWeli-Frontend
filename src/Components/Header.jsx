@@ -36,7 +36,7 @@ const slides = [
 
 const HeroSection = () => {
   return (
-    <div className="bg-[#fefbe8] lg:h-[60vh] flex items-center justify-center px-10 relative">
+    <div className=" lg:h-[60vh] flex items-center justify-center px-10 relative">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
