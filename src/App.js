@@ -1,7 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import AdminDashboard from "./Pages/AdminDashboard";
+
+// Import Home components
+import Home from "./Pages/Home"; // Regular Home Page
+import AdminHome from "./Containers/AdminHome"; // Admin Home Page
+
+// Other imports (Removed AdminDashboard)
 import CallCenterDashboard from "./Pages/CallCenterDashboard";
 import AgentStock from "./Pages/AgentStock";
 import AgentDashboard from "./Pages/AgentDashboard";
@@ -18,8 +22,13 @@ import Register from "./Pages/Register";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home  />} />
-      <Route path="/admin" element={<AdminDashboard />} />
+      {/* Default Home Page */}
+      <Route path="/" element={<Home />} />
+
+      {/* Admin Home Page (Replaces AdminDashboard) */}
+      <Route path="/admin" element={<AdminHome />} />
+
+      {/* Other Routes */}
       <Route path="/call-center" element={<CallCenterDashboard />} />
       <Route path="/agent-stock" element={<AgentStock />} />
       <Route path="/agent-dashboard" element={<AgentDashboard />} />
