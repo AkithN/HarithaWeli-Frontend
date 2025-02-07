@@ -63,17 +63,17 @@ const Login = ({ isOpen, onClose }) => {
 
         {/* Forgot Password */}
         <div className="text-right mb-3">
-          <a href="#" className="text-blue-400 text-sm hover:underline">Forgot Password?</a>
+          <a href="#" className="text-green-400 text-sm hover:underline">Forgot Password?</a>
         </div>
 
         {/* Login Button */}
-        <button className="w-full bg-blue-600 text-white py-2 rounded-md text-lg font-semibold hover:bg-blue-700 transition">
+        <button className="w-full bg-white bg-opacity-20  text-white py-2 rounded-md text-lg font-semibold hover:bg-green-700 transition">
           Login
         </button>
 
         {/* Signup Link */}
         <p className="text-center text-gray-300 mt-3">
-          Don’t have an account? <a href="#" className="text-blue-400 hover:underline">Sign Up</a>
+          Don’t have an account? <a href="#" className="text-green-400 hover:underline">Sign Up</a>
         </p>
       </div>
     </div>
