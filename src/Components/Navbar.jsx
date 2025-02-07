@@ -5,8 +5,11 @@ import {
   FaShoppingBag,
   FaInfoCircle,
   FaUser,
+  FaShoppingCart,
 } from "react-icons/fa";
 import headerLogo from "../Assets/header-logo.png";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("home"); // Track active tab
@@ -14,9 +17,17 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 shadow-md bg-white bg-opacity-10 backdrop-blur-lg">
-      {/* Logo & Navbar Container */}
-      <div className="flex items-center justify-between px-6 md:px-20 lg:px-80 py-4">
+      
+      <div className="flex items-center justify-between px-6 md:px-20 lg:px-100 py-4">
         <img src={headerLogo} alt="HeaderLogo" className="h-14 w-auto md:h-20" />
+        <div className="flex items-center gap-10">
+          <a href="/cart" className="text-black text-lg">
+            <FaShoppingCart />
+          </a>
+          <a href="/profile" className="text-black text-lg">
+            <FaUser />
+          </a>
+        </div>
       </div>
 
       {/* Fixed Navigation Bar */}
@@ -27,11 +38,11 @@ const Navbar = () => {
         px-4 py-3 transition-all duration-300"
       >
         {[
-          { id: "home", icon: <FaHome />, name: "Home" },
-          { id: "calculator", icon: <FaCalculator />, name: "Calculator" },
-          { id: "eshop", icon: <FaShoppingBag />, name: "E-Shop" },
-          { id: "about", icon: <FaInfoCircle />, name: "About Us" },
-          { id: "profile", icon: <FaUser />, name: "Profile" },
+          { id: "home", icon: <FaHome />, name: "Home", link: "/" },
+          { id: "calculator", icon: <FaCalculator />, name: "Calculator",link: "/productCal" },
+          { id: "eshop", icon: <FaShoppingBag />, name: "E-Shop",link: "/eshop" },
+          { id: "about", icon: <FaInfoCircle />, name: "About Us",link: "/about" },
+          
         ].map((tab) => (
           <button
             key={tab.id}
