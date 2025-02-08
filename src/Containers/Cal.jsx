@@ -36,7 +36,7 @@ const Cal = () => {
   }, [product, inches, quality]);
 
   return (
-    <div className="p-6 max-w-lg mx-auto my-10 bg-white shadow-md rounded-xl">
+    <div className="p-6 max-w-lg mx-auto my-10 bg-white mt-20 shadow-md rounded-xl">
       <h2 className="text-2xl font-bold mb-4">Product Calculator</h2>
 
       <label className="block mb-2">Select Product:</label>
