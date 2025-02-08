@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaHome,
   FaCalculator,
@@ -7,13 +7,26 @@ import {
   FaUser,
   FaShoppingCart
 } from "react-icons/fa";
+import { useLocation } from "react-router-dom"; // To track current page
 import headerLogo from "../Assets/header-logo.png";
 import Login from "../Pages/Login"; 
 
 const Navbar = () => {
+  const location = useLocation(); // Get current page path
   const [activeTab, setActiveTab] = useState("home"); // Track active tab
-  const [clickedTab, setClickedTab] = useState(null); // Track clicked tab for text toggle
+  const [hoveredTab, setHoveredTab] = useState(null); // Track hovered tab
   const [isLoginOpen, setIsLoginOpen] = useState(false); // Control login popup
+
+  // Update active tab based on the current route
+  useEffect(() => {
+    const pathToTab = {
+      "/": "home",
+      "/productCal": "calculator",
+      "/eshop": "eshop",
+      "/about": "about",
+    };
+    setActiveTab(pathToTab[location.pathname] || "home");
+  }, [location.pathname]);
 
   return (
     <>
@@ -51,13 +64,11 @@ const Navbar = () => {
               className={`relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
                 activeTab === tab.id ? "bg-green-600 text-white" : "text-black"
               }`}
-              onClick={() => {
-                setActiveTab(tab.id);
-                setClickedTab(clickedTab === tab.id ? null : tab.id);
-              }}
+              onMouseEnter={() => setHoveredTab(tab.id)}
+              onMouseLeave={() => setHoveredTab(null)}
             >
               <span className="text-lg">{tab.icon}</span>
-              {clickedTab === tab.id && (
+              {(hoveredTab === tab.id || activeTab === tab.id) && (
                 <span className="text-sm font-medium">{tab.name}</span>
               )}
             </a>
