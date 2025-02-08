@@ -7,8 +7,8 @@ import {
   FaUser,
   FaShoppingCart
 } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
+import { useLocation, Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import headerLogo from "../Assets/header-logo.png";
 import Login from "../Pages/Login";
 
@@ -22,29 +22,33 @@ const Navbar = () => {
     const pathToTab = {
       "/": "home",
       "/productCal": "calculator",
-      "/eshop": "eshop",
       "/about": "about",
     };
-    setActiveTab(pathToTab[location.pathname] || "home");
+
+    const currentPath = location.pathname;
+
+    if (currentPath.startsWith("/e-shop")) {
+      setActiveTab("eshop");
+    } else {
+      setActiveTab(pathToTab[currentPath] || "home");
+    }
   }, [location.pathname]);
 
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 shadow-md bg-white bg-opacity-10 backdrop-blur-lg">
-        {/* Logo & Navbar Container */}
         <div className="flex items-center justify-between px-6 md:px-20 lg:px-100 py-4">
           <img src={headerLogo} alt="HeaderLogo" className="h-14 w-auto md:h-20" />
           <div className="flex items-center gap-10">
-            <a href="/cart" className="text-black text-lg">
+            <Link to="/cart" className="text-black text-lg">
               <FaShoppingCart />
-            </a>
+            </Link>
             <button onClick={() => setIsLoginOpen(true)} className="text-black text-lg">
               <FaUser />
             </button>
           </div>
         </div>
 
-        {/* Fixed Navigation Bar */}
         <nav
           className="fixed top-6 left-1/2 transform -translate-x-1/2 
         bg-white-500 bg-opacity-10 backdrop-blur-lg shadow-2xl 
@@ -54,12 +58,12 @@ const Navbar = () => {
           {[
             { id: "home", icon: <FaHome />, name: "Home", link: "/" },
             { id: "calculator", icon: <FaCalculator />, name: "Calculator", link: "/productCal" },
-            { id: "eshop", icon: <FaShoppingBag />, name: "Shop", link: "/eshop" },
+            { id: "eshop", icon: <FaShoppingBag />, name: "Shop", link: "/e-shop" },
             { id: "about", icon: <FaInfoCircle />, name: "About Us", link: "/about" },
           ].map((tab) => (
-            <a
+            <Link
               key={tab.id}
-              href={tab.link}
+              to={tab.link}
               className={`relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
                 activeTab === tab.id ? "bg-green-600 text-white" : "text-black"
               }`}
@@ -80,16 +84,14 @@ const Navbar = () => {
                   </motion.span>
                 )}
               </AnimatePresence>
-            </a>
+            </Link>
           ))}
         </nav>
       </header>
 
-      {/* Login Popup Component */}
       <Login isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </>
   );
 };
 
 export default Navbar;
-
