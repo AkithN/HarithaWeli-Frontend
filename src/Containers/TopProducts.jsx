@@ -23,7 +23,7 @@ const products = [
   },
 ];
 
-const tabs = ["TOP", "NEW IN"];
+const tabs = ["TOP"];
 
 const TopProducts = () => {
   const [activeTab, setActiveTab] = useState("TOP");

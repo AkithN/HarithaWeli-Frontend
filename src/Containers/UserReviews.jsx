@@ -1,8 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
@@ -31,15 +30,14 @@ const reviews = [
   },
   {
     id: 4,
-    name: "Sarah Johnson",
-    description: "Really loved the experience. Fast delivery and great eco-friendly packaging.",
+    name: "Anna Williams",
+    description: "Products are amazing and delivered on time! Will definitely shop again.",
     rating: 4.5,
-    image: "https://randomuser.me/api/portraits/women/2.jpg",
+    image: "https://randomuser.me/api/portraits/women/3.jpg",
   },
 ];
 
 const UserReviews = () => {
-  // Function to display star ratings dynamically
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -59,7 +57,7 @@ const UserReviews = () => {
       <h2 className="text-2xl font-semibold text-center mb-6">What Our Customers Say</h2>
 
       <Swiper
-        modules={[Navigation, Autoplay]}
+        modules={[Autoplay]}
         spaceBetween={20}
         slidesPerView={1}
         breakpoints={{
@@ -67,12 +65,11 @@ const UserReviews = () => {
           1024: { slidesPerView: 3 },
         }}
         autoplay={{ delay: 4000 }}
-        navigation
         loop={true}
         className="w-full"
       >
         {reviews.map((review) => (
-          <SwiperSlide key={review.id} className="flex flex-col items-center bg-white p-6 shadow-lg rounded-lg text-center">
+          <SwiperSlide key={review.id} className="flex flex-col items-center bg-yellow-50 p-6 shadow-lg rounded-lg text-center">
             <img src={review.image} alt={review.name} className="w-16 h-16 rounded-full mb-4 border-2 border-green-500" />
             <h3 className="text-lg font-semibold">{review.name}</h3>
             <p className="text-gray-600 text-sm mt-2">{review.description}</p>

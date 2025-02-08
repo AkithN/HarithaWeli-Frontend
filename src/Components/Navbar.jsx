@@ -7,17 +7,17 @@ import {
   FaUser,
   FaShoppingCart
 } from "react-icons/fa";
-import { useLocation } from "react-router-dom"; // To track current page
+import { useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 import headerLogo from "../Assets/header-logo.png";
-import Login from "../Pages/Login"; 
+import Login from "../Pages/Login";
 
 const Navbar = () => {
-  const location = useLocation(); // Get current page path
-  const [activeTab, setActiveTab] = useState("home"); // Track active tab
-  const [hoveredTab, setHoveredTab] = useState(null); // Track hovered tab
-  const [isLoginOpen, setIsLoginOpen] = useState(false); // Control login popup
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState("home");
+  const [hoveredTab, setHoveredTab] = useState(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-  // Update active tab based on the current route
   useEffect(() => {
     const pathToTab = {
       "/": "home",
@@ -38,7 +38,6 @@ const Navbar = () => {
             <a href="/cart" className="text-black text-lg">
               <FaShoppingCart />
             </a>
-            {/* Login Popup Trigger */}
             <button onClick={() => setIsLoginOpen(true)} className="text-black text-lg">
               <FaUser />
             </button>
@@ -55,7 +54,7 @@ const Navbar = () => {
           {[
             { id: "home", icon: <FaHome />, name: "Home", link: "/" },
             { id: "calculator", icon: <FaCalculator />, name: "Calculator", link: "/productCal" },
-            { id: "eshop", icon: <FaShoppingBag />, name: "E-Shop", link: "/eshop" },
+            { id: "eshop", icon: <FaShoppingBag />, name: "Shop", link: "/eshop" },
             { id: "about", icon: <FaInfoCircle />, name: "About Us", link: "/about" },
           ].map((tab) => (
             <a
@@ -68,9 +67,19 @@ const Navbar = () => {
               onMouseLeave={() => setHoveredTab(null)}
             >
               <span className="text-lg">{tab.icon}</span>
-              {(hoveredTab === tab.id || activeTab === tab.id) && (
-                <span className="text-sm font-medium">{tab.name}</span>
-              )}
+              <AnimatePresence>
+                {(hoveredTab === tab.id || activeTab === tab.id) && (
+                  <motion.span
+                    className="text-sm font-medium"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                  >
+                    {tab.name}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </a>
           ))}
         </nav>
@@ -83,3 +92,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
