@@ -9,8 +9,8 @@ import {
 } from "react-icons/fa";
 import { useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import headerLogo from "../Assets/header-logo.png";
-import Login from "../Pages/Login";
+import headerLogo from "../Assets/header-logo.png"; // Make sure path is correct
+import Login from "../Pages/Login"; // Make sure path is correct
 
 const Navbar = () => {
   const location = useLocation();
@@ -27,7 +27,7 @@ const Navbar = () => {
 
     const currentPath = location.pathname;
 
-    if (currentPath.startsWith("/e-shop")) {
+    if (currentPath.startsWith("/e-shop")) { // Or /eshop, be consistent
       setActiveTab("eshop");
     } else {
       setActiveTab(pathToTab[currentPath] || "home");
@@ -38,7 +38,9 @@ const Navbar = () => {
     <>
       <header className="fixed top-0 left-0 w-full z-50 shadow-md bg-white bg-opacity-10 backdrop-blur-lg">
         <div className="flex items-center justify-between px-6 md:px-20 lg:px-100 py-4">
-          <img src={headerLogo} alt="HeaderLogo" className="h-14 w-auto md:h-20" />
+          <Link to="/"> {/* Logo links to home */}
+            <img src={headerLogo} alt="HeaderLogo" className="h-14 w-auto md:h-20" />
+          </Link>
           <div className="flex items-center gap-10">
             <Link to="/cart" className="text-black text-lg">
               <FaShoppingCart />
@@ -58,7 +60,7 @@ const Navbar = () => {
           {[
             { id: "home", icon: <FaHome />, name: "Home", link: "/" },
             { id: "calculator", icon: <FaCalculator />, name: "Calculator", link: "/productCal" },
-            { id: "eshop", icon: <FaShoppingBag />, name: "Shop", link: "/e-shop" },
+            { id: "eshop", icon: <FaShoppingBag />, name: "Shop", link: "/e-shop" }, // Or /eshop
             { id: "about", icon: <FaInfoCircle />, name: "About Us", link: "/about" },
           ].map((tab) => (
             <Link
