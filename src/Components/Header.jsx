@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -9,6 +9,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Header1 from "../Assets/Header1.jpg";
 import Header2 from "../Assets/Header2.jpg";
 import Header3 from "../Assets/Header3.jpg";
+import TileImage from "../Assets/1.png"; // Import the tile image
 
 // Sample slide data
 const slides = [
@@ -35,14 +36,6 @@ const slides = [
 const HeroSection = () => {
   const [animateCubes, setAnimateCubes] = useState(true);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimateCubes((prev) => !prev); // Toggle animation every 2 seconds
-    }, 2000);
-    
-    return () => clearInterval(interval); // Clean up on component unmount
-  }, []);
-
   return (
     <div className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-r from-green-100 via-green-250 to-green-00">
       {/* Animated Background */}
@@ -50,15 +43,46 @@ const HeroSection = () => {
         <div className="absolute inset-0 w-full h-full bg-opacity-30 backdrop-blur-lg" />
       </div>
 
+      {/* Inline Tailwind Animation for Floating Cubes and Tile Background */}
+      <style>
+        {`
+          @keyframes floating1 {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+          }
+          @keyframes floating2 {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+          }
+          @keyframes floating3 {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+          }
+          @keyframes tileBackground {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}
+      </style>
+
+      {/* Tile Background Animation */}
+      <div
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-cover bg-no-repeat opacity-10 animate-[tileBackground_30s_linear_infinite]"
+        style={{ backgroundImage: `url(${TileImage})`, backgroundPosition: "center", backgroundSize: "contain" }}
+      />
+      
       {/* Floating Cubes Animation */}
       <div
-        className={`absolute top-1/4 left-1/3 w-40 h-40 bg-green-800 opacity-70 transform rotate-12 ${animateCubes ? "animate-floating" : ""}`}
+        className={`absolute top-1/4 left-1/3 w-40 h-40 bg-green-800 opacity-70 transform rotate-12 ${animateCubes ? "animate-[floating1_4s_ease-in-out_infinite]" : ""}`}
       />
       <div
-        className={`absolute bottom-1/4 right-1/4 w-32 h-32 bg-green-600 opacity-60 transform rotate-45 ${animateCubes ? "animate-floating delay-1000" : ""}`}
+        className={`absolute bottom-1/4 right-1/4 w-32 h-32 bg-green-600 opacity-60 transform rotate-45 ${animateCubes ? "animate-[floating2_4s_ease-in-out_infinite]" : ""}`}
       />
       <div
-        className={`absolute top-1/3 right-1/3 w-24 h-24 bg-green-500 opacity-50 transform rotate-30 ${animateCubes ? "animate-floating delay-500" : ""}`}
+        className={`absolute top-1/3 right-1/3 w-24 h-24 bg-green-500 opacity-50 transform rotate-30 ${animateCubes ? "animate-[floating3_4s_ease-in-out_infinite]" : ""}`}
       />
 
       <Swiper
