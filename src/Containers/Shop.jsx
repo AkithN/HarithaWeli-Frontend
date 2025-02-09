@@ -37,7 +37,7 @@ const Shop = () => {
     <div className="relative">
       {showPopup && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-md">
-          <div className="bg-white bg-opacity-10 rounded-lg p-6 w-4/5 sm:w-2/3 lg:w-1/2 shadow-lg">
+          <div className="bg-black bg-opacity-10 rounded-lg p-6 w-4/5 sm:w-2/3 lg:w-1/2 shadow-lg">
             <h3 className="text-2xl font-semibold mb-6 text-center">Select Your Nearest Branch</h3>
             <div className="grid grid-cols-3 gap-6">
               {branches.map((branch) => (
