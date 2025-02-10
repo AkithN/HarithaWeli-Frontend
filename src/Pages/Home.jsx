@@ -10,7 +10,10 @@ import Product from '../Containers/Products'
 import UserReviews from '../Containers/UserReviews'
 import Location from '../Containers/Location'
 
+
 const Home = () => {
+  
+  
   return (
     <div>
       < Navbar/> 

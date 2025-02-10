@@ -35,6 +35,7 @@ const slides = [
 
 const HeroSection = () => {
   const [animateCubes, setAnimateCubes] = useState(true);
+  
 
   return (
     <div className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-r from-green-100 via-green-250 to-green-00">

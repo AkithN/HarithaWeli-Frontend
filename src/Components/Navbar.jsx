@@ -5,18 +5,22 @@ import {
   FaShoppingBag,
   FaInfoCircle,
   FaUser,
-  FaShoppingCart
+  FaShoppingCart,
+  FaGlobe
 } from "react-icons/fa";
 import { useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import headerLogo from "../Assets/header-logo.png";
 import Login from "../Pages/Login";
 
 const Navbar = () => {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState("home");
   const [hoveredTab, setHoveredTab] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
     const pathToTab = {
@@ -34,6 +38,11 @@ const Navbar = () => {
     }
   }, [location.pathname]);
 
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    setIsLangOpen(false);
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 shadow-md bg-white bg-opacity-10 backdrop-blur-lg">
@@ -41,7 +50,30 @@ const Navbar = () => {
           <Link to="/">
             <img src={headerLogo} alt="HeaderLogo" className="h-14 w-auto md:h-20" />
           </Link>
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-6 relative">
+            {/* Language Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="text-black text-lg flex items-center gap-1"
+              >
+                <FaGlobe />
+              </button>
+              {isLangOpen && (
+                <div className="absolute top-10 left-0 bg-white shadow-lg rounded-lg p-2 flex flex-col">
+                  {[{ code: "en", label: "English" }, { code: "si", label: "Sinhala" }, { code: "ta", label: "Tamil" }].map((lang) => (
+                    <button
+                      key={lang.code}
+                      className="flex items-center gap-2 px-4 py-2 text-black hover:bg-gray-200 text-sm"
+                      onClick={() => changeLanguage(lang.code)}
+                    >
+                      <FaGlobe /> {lang.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            
             <Link to="/cart" className="text-black text-lg">
               <FaShoppingCart />
             </Link>
@@ -55,21 +87,21 @@ const Navbar = () => {
           className="fixed top-6 left-1/2 transform -translate-x-1/2 
         bg-white-500 bg-opacity-10 backdrop-blur-lg shadow-2xl 
         text-black rounded-3xl flex items-center justify-center
-        px-4 py-3 transition-all duration-300 w-auto" // Key change: w-auto
+        px-4 py-3 transition-all duration-300 w-auto"
         >
-          <div className="flex w-full"> {/* Removed justify-between */}
+          <div className="flex w-full">
             {[
-              { id: "home", icon: <FaHome />, name: "Home", link: "/" },
-              { id: "calculator", icon: <FaCalculator />, name: "Calculator", link: "/productCal" },
-              { id: "eshop", icon: <FaShoppingBag />, name: "Shop", link: "/e-shop" },
-              { id: "about", icon: <FaInfoCircle />, name: "About Us", link: "/about" },
+              { id: "home", icon: <FaHome />, name: t("Home"), link: "/" },
+              { id: "calculator", icon: <FaCalculator />, name: t("Calculator"), link: "/productCal" },
+              { id: "eshop", icon: <FaShoppingBag />, name: t("Shop"), link: "/e-shop" },
+              { id: "about", icon: <FaInfoCircle />, name: t("About Us"), link: "/about" },
             ].map((tab) => (
               <Link
                 key={tab.id}
                 to={tab.link}
                 className={`relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 
                   ${activeTab === tab.id ? "bg-green-600 text-white" : "text-black"}
-                  md:px-4 lg:px-6`} // Responsive padding
+                  md:px-4 lg:px-6`}
                 onMouseEnter={() => setHoveredTab(tab.id)}
                 onMouseLeave={() => setHoveredTab(null)}
               >
@@ -91,9 +123,7 @@ const Navbar = () => {
             ))}
           </div>
         </nav>
-
       </header>
-
       <Login isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </>
   );
