@@ -70,10 +70,10 @@ const HeroSection = () => {
       </style>
 
       {/* Tile Background Animation */}
-      <div
+      {/* <div
         className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-cover bg-no-repeat opacity-10 animate-[tileBackground_30s_linear_infinite]"
         style={{ backgroundImage: `url(${TileImage})`, backgroundPosition: "center", backgroundSize: "contain" }}
-      />
+      /> */}
       
       {/* Floating Cubes Animation */}
       <div
