@@ -22,7 +22,7 @@ const branches = [
 ];
 
 const Shop = () => {
-  const [selectedBranch, setSelectedBranch] = useState('');
+  const [setSelectedBranch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [showPopup, setShowPopup] = useState(true);
 

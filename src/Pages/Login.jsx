@@ -1,30 +1,60 @@
 import React, { useState } from "react";
-import { FaGoogle, FaFacebook, FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaTimes, FaEye, FaEyeSlash } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate();
+
+  // Hardcoded login credentials
+  const users = {
+    "client@example.com": "client123",
+    "admin@example.com": "admin123",
+    "sales@example.com": "sales123",
+    "agent@example.com": "agent123",
+  };
+
+  // Role mapping for each email
+  const roles = {
+    "client@example.com": "Client",
+    "admin@example.com": "Admin",
+    "sales@example.com": "Sales Representative",
+    "agent@example.com": "Agent",
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
+    const { email, password } = formData;
+
     if (isLogin) {
-      console.log("Login:", formData.email, formData.password);
-    } else {
-      if (formData.password !== formData.confirmPassword) {
-        alert("Passwords do not match");
-        return;
+      if (users[email] && users[email] === password) {
+        const userRole = roles[email];
+
+        // Store in localStorage
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userRole", userRole);
+
+        alert(`Login successful! Role: ${userRole}`);
+        console.log(`Logged in as: ${userRole}`);
+
+        // Redirect user based on role
+        if (userRole === "Client") {
+          navigate("/");
+        } else {
+          navigate("/admin");
+        }
+      } else {
+        alert("Invalid email or password");
       }
-      console.log("Signup:", formData);
+    } else {
+      alert("Signup is disabled in this demo.");
     }
   };
 
@@ -58,24 +88,8 @@ const AuthModal = ({ isOpen, onClose }) => {
             transition={{ duration: 0.3 }}
           >
             {/* Login Form */}
-            {isLogin ? (
+            {isLogin && (
               <>
-                <div className="flex gap-4 mt-4">
-                  <button className="flex-1 flex items-center justify-center gap-2 bg-white bg-opacity-20 text-white py-2 px-4 rounded-md hover:bg-opacity-30 transition">
-                    <FaGoogle /> Continue Google
-                  </button>
-                  <button className="flex-1 flex items-center justify-center gap-2 bg-white bg-opacity-20 text-white py-2 px-4 rounded-md hover:bg-opacity-30 transition">
-                    <FaFacebook /> Continue Facebook
-                  </button>
-                </div>
-
-                {/* OR Separator */}
-                <div className="flex items-center my-4 text-gray-400">
-                  <hr className="flex-grow border-gray-500" />
-                  <span className="mx-2">or</span>
-                  <hr className="flex-grow border-gray-500" />
-                </div>
-
                 <div className="mb-3">
                   <label className="text-white text-sm">Email</label>
                   <input
@@ -108,67 +122,9 @@ const AuthModal = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="text-right mb-3">
-                  <a href="#" className="text-green-400 text-sm hover:underline">
+                  <a href="/" className="text-green-400 text-sm hover:underline">
                     Forgot Password?
                   </a>
-                </div>
-              </>
-            ) : (
-              // Register Form
-              <>
-                <div className="mb-3">
-                  <label className="text-white text-sm">Full Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full p-2 mt-1 rounded-md bg-gray-700 bg-opacity-40 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="text-white text-sm">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full p-2 mt-1 rounded-md bg-gray-700 bg-opacity-40 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Enter your email"
-                  />
-                </div>
-
-                <div className="mb-3 relative">
-                  <label className="text-white text-sm">Password</label>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    className="w-full p-2 mt-1 rounded-md bg-gray-700 bg-opacity-40 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Enter password"
-                  />
-                  <button
-                    type="button"
-                    className="absolute right-3 top-10 text-gray-300"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                  </button>
-                </div>
-
-                <div className="mb-4">
-                  <label className="text-white text-sm">Confirm Password</label>
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    className="w-full p-2 mt-1 rounded-md bg-gray-700 bg-opacity-40 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Confirm your password"
-                  />
                 </div>
               </>
             )}

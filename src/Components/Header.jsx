@@ -9,7 +9,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Header1 from "../Assets/Header1.jpg";
 import Header2 from "../Assets/Header2.jpg";
 import Header3 from "../Assets/Header3.jpg";
-import TileImage from "../Assets/1.png"; // Import the tile image
+// import TileImage from "../Assets/1.png";
 
 // Sample slide data
 const slides = [
@@ -34,7 +34,7 @@ const slides = [
 ];
 
 const HeroSection = () => {
-  const [animateCubes, setAnimateCubes] = useState(true);
+  const [animateCubes] = useState(true);
   
 
   return (
