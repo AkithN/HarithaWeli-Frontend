@@ -18,10 +18,10 @@ import Account from "./Pages/ClientAccount";
 import About from "./Pages/Aboutus";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import { useTranslation } from "react-i18next";
+
 
 function App() {
-  const { t } = useTranslation();
+  
   return (
     <Routes>
       {/* Default Home Page */}
