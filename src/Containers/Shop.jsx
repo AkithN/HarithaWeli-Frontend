@@ -34,14 +34,14 @@ const Shop = () => {
     <div className="relative min-h-screen bg-white">
       {showPopup && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-md">
-          <div className="bg-white rounded-lg p-6 w-4/5 sm:w-2/3 lg:w-1/2 shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Select Your Nearest Branch</h3>
+          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-8 w-4/5 sm:w-2/3 lg:w-1/2 shadow-2xl border border-white/20">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">Select Your Nearest Branch</h3>
             <div className="grid grid-cols-3 gap-6">
               {branches.map((branch) => (
                 <button
                   key={branch}
                   onClick={handleBranchChange}
-                  className="px-6 py-4 bg-gray-200 text-gray-800 rounded-md hover:bg-green-500 hover:text-white transition mb-4 text-center"
+                  className="px-6 py-4 bg-white bg-opacity-20 text-white rounded-md hover:bg-green-500 hover:text-white transition mb-4 text-center shadow-lg"
                 >
                   {branch}
                 </button>
@@ -52,7 +52,7 @@ const Shop = () => {
       )}
 
       <div className="max-w-6xl mx-auto my-10">
-        <h2 className="text-4xl font-bold text-gray-800 mt-28 mb-10 text-center">E-Shop</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-10 mt-28 text-center">E-Shop</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           {products.map((product) => (
             <div
