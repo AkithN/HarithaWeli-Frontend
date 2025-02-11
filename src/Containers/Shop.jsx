@@ -52,7 +52,7 @@ const Shop = () => {
       )}
 
       <div className="max-w-6xl mx-auto my-10">
-        <h2 className="text-4xl font-bold text-gray-800 mb-10 text-center">E-Shop</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mt-28 mb-10 text-center">E-Shop</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           {products.map((product) => (
             <div
