@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import headerLogo from "../Assets/header-logo.png";
 import Login from "../Pages/Login";
+import CartPage from "../Pages/Cartpage"; // Import CartPage component
 
 const Navbar = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [hoveredTab, setHoveredTab] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false); // New state for Cart Modal
 
   useEffect(() => {
     const pathToTab = {
@@ -75,9 +77,9 @@ const Navbar = () => {
               )}
             </div>
             {/* Cart and Login Buttons */}
-            <Link to="/cart" className="text-black text-lg">
+            <button onClick={() => setIsCartOpen(true)} className="text-black text-lg">
               <FaShoppingCart />
-            </Link>
+            </button>
             <button onClick={() => setIsLoginOpen(true)} className="text-black text-lg">
               <FaUser />
             </button>
@@ -91,12 +93,10 @@ const Navbar = () => {
         text-black rounded-3xl flex items-center justify-center 
         px-4 py-3 transition-all duration-300 w-auto z-50">
         <div className="flex">
-          {[
-            { id: "home", icon: <FaHome />, name: t("Home"), link: "/" },
+          {[{ id: "home", icon: <FaHome />, name: t("Home"), link: "/" },
             { id: "calculator", icon: <FaCalculator />, name: t("Calculator"), link: "/productCal" },
             { id: "eshop", icon: <FaShoppingBag />, name: t("Shop"), link: "/e-shop" },
-            { id: "about", icon: <FaInfoCircle />, name: t("About Us"), link: "/about" },
-          ].map((tab) => (
+            { id: "about", icon: <FaInfoCircle />, name: t("About Us"), link: "/about" }].map((tab) => (
             <Link
               key={tab.id}
               to={tab.link}
@@ -129,12 +129,10 @@ const Navbar = () => {
         bg-white-500 bg-opacity-10 backdrop-blur-lg shadow-2xl 
         text-black rounded-t-3xl flex items-center justify-around 
         px-4 py-3 transition-all duration-300 z-50">
-        {[
-          { id: "home", icon: <FaHome />, name: t("Home"), link: "/" },
+        {[{ id: "home", icon: <FaHome />, name: t("Home"), link: "/" },
           { id: "calculator", icon: <FaCalculator />, name: t("Calculator"), link: "/productCal" },
           { id: "eshop", icon: <FaShoppingBag />, name: t("Shop"), link: "/e-shop" },
-          { id: "about", icon: <FaInfoCircle />, name: t("About Us"), link: "/about" },
-        ].map((tab) => (
+          { id: "about", icon: <FaInfoCircle />, name: t("About Us"), link: "/about" }].map((tab) => (
           <Link
             key={tab.id}
             to={tab.link}
@@ -149,6 +147,9 @@ const Navbar = () => {
 
       {/* Login Modal */}
       <Login isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      
+      {/* Cart Modal */}
+      <CartPage isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 };

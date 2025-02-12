@@ -18,6 +18,8 @@ import Account from "./Pages/ClientAccount";
 import About from "./Pages/Aboutus";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Cartpage from "./Pages/Cartpage";
+import Payment from "./Containers/Payment"
 
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
       <Route path="/About" element={<About />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/Cart" element={<Cartpage />} />
+      <Route path="/payment" element={<Payment />} />
     </Routes>
   );
 }
