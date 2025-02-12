@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div className="flex min-h-screen w-screen bg-black text-white">  {/* Full screen background */}
             {/* Sidebar */}
-            <div className="fixed top-3 left-5 w-64 h-screen"> {/* Ensure full height */}
+            <div className="fixed top-3 left-5 w-64 h-screen z-50"> {/* Ensure full height */}
                 <AdminSideBar />
             </div>
 

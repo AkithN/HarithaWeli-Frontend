@@ -1,28 +1,33 @@
 import React from "react";
-import AdminNavbar from "../Components/AdminNavbar";
 import AdminSideBar from "../Components/AdminSideBar";
-import CallCenterDash from "../Containers/CallCenterDash";
+import AdminNavbar from "../Components/AdminNavbar";
+import WebDash from "../Containers/WebDash";
 
-const CallCenterDashboard = () => {
+const WebDashboard = () => {
     return (
-        <div className="flex min-h-screen w-screen bg-black text-white">  {/* Full screen black background */}
+        <div className="flex min-h-screen w-screen bg-black text-white">
             {/* Sidebar */}
             <div className="fixed top-3 left-5 w-64 h-screen z-50"> {/* Fixed sidebar */}
                 <AdminSideBar />
             </div>
 
-            {/* Main Content */}
             <div className="flex flex-col flex-1 ml-64">  {/* Push content to the right */}
                 {/* Navbar */}
                 <AdminNavbar />
 
-                {/* Main Content Section */}
                 <div className="flex-1 p-6 mt-20 ml-[-205px] max-w-[1500px]">
-                    <CallCenterDash />
+
+
+
+                    {/* Render Call History Page */}
+                    <WebDash />
+
+                    {/* Navigation Button */}
+
                 </div>
             </div>
         </div>
     );
 };
 
-export default CallCenterDashboard;
+export default WebDashboard;

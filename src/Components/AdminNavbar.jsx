@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { UserOutlined, BellOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import avatar from "../Assets/avatar.jpg";
 
 const AdminNavbar = () => {
   return (
     <nav className="bg-[#262626] text-white px-6 py-4 flex items-center justify-between shadow-lg 
-                    fixed top-0 right-[-675px] transform -translate-x-1/2 w-[90%] rounded-full mx-auto mt-3 h-14">
+                    fixed top-3 right-[-675px] transform -translate-x-1/2 w-[90%] rounded-full z-50 h-14">
 
       {/* Left Side */}
       <div className="flex items-center gap-6 px-8">
