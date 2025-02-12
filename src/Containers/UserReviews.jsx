@@ -53,15 +53,17 @@ const UserReviews = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto py-12 px-6">
-      <h2 className="text-2xl font-semibold text-center mb-6">What Our Customers Say</h2>
+    <section className="max-w-7xl mx-auto py-16 px-6 bg-gradient-to-b from-yellow-50 to-white rounded-lg shadow-lg">
+      <h2 className="text-3xl font-semibold mb-6 rounded-md text-center">
+        WHAT OUR CUSTOMERS SAY
+      </h2>
 
       <Swiper
         modules={[Autoplay]}
         spaceBetween={20}
         slidesPerView={1}
         breakpoints={{
-          640: { slidesPerView: 2 },
+          640: { slidesPerView: 1 },
           1024: { slidesPerView: 3 },
         }}
         autoplay={{ delay: 4000 }}
@@ -69,10 +71,16 @@ const UserReviews = () => {
         className="w-full"
       >
         {reviews.map((review) => (
-          <SwiperSlide key={review.id} className="flex flex-col items-center bg-yellow-50 p-6 shadow-lg rounded-lg text-center">
-            <img src={review.image} alt={review.name} className="w-16 h-16 rounded-full mb-4 border-2 border-green-500" />
-            <h3 className="text-lg font-semibold">{review.name}</h3>
-            <p className="text-gray-600 text-sm mt-2">{review.description}</p>
+          <SwiperSlide key={review.id} className="flex flex-col items-center bg-white p-6 shadow-lg rounded-lg text-center transition-transform transform hover:scale-105">
+            <img
+              src={review.image}
+              alt={review.name}
+              className="w-20 h-30 rounded-full mb-4 border-4 border-yellow-400 shadow-md"
+            />
+            <h3 className="text-xl font-semibold text-gray-800 ">{review.name}</h3>
+            <p className="text-gray-600 text-sm mt-2 px-4">
+              "{review.description}"
+            </p>
             <div className="flex mt-3">{renderStars(review.rating)}</div>
           </SwiperSlide>
         ))}
