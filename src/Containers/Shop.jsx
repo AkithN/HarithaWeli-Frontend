@@ -15,6 +15,12 @@ const products = [
   { id: 4, price: 40, image: Product4, available: false },
   { id: 5, price: 50, image: Product5, available: true },
   { id: 6, price: 60, image: Product6, available: true },
+  { id: 7, price: 10, image: Product1, available: true },
+  { id: 8, price: 20, image: Product2, available: false },
+  { id: 9, price: 30, image: Product3, available: true },
+  { id: 10, price: 40, image: Product4, available: false },
+  { id: 11, price: 50, image: Product5, available: true },
+  { id: 12, price: 60, image: Product6, available: true },
 ];
 
 const branches = [
