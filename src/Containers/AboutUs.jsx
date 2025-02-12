@@ -17,7 +17,7 @@ const AboutUs = () => {
 
   return (
     <section className="max-w-7xl mx-auto py-12 px-6">
-      <div className="bg-green-500 text-white text-xl font-semibold px-6 py-3 rounded-md">
+      <div className="bg-green-500 text-white text-xl font-semibold px-6 py-3 rounded-md text-center">
         OUR SUSTAINABLE FOCUS
       </div>
 

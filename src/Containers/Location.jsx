@@ -1,77 +1,80 @@
-import React from "react";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import React, { useState } from "react";
 
-// Sample Location Data
 const locations = [
-  {
-    id: 1,
-    name: "Kadawatha",
-    address: "132/1, Kandy Road, Mahara, Kadawatha.",
-    mapLink: "https://www.google.com/maps?q=Kadawatha,Sri+Lanka",
-  },
-  {
-    id: 2,
-    name: "Makola",
-    address: "329/3 Makola Rd, Kiribathgoda.",
-    mapLink: "https://www.google.com/maps?q=Makola,Sri+Lanka",
-  },
-  {
-    id: 3,
-    name: "Ragama",
-    address: "188/A Mahabage Road, Ragama.",
-    mapLink: "https://www.google.com/maps?q=Ragama,Sri+Lanka",
-  },
-  {
-    id: 4,
-    name: "Rikillagaskada",
-    address: "19, Makuruppa Road, Rikillagaskada.",
-    mapLink: "https://www.google.com/maps?q=Rikillagaskada,Sri+Lanka",
-  },
+  { id: 1, name: "Kadawatha", address: "132/1, Kandy Road, Mahara, Kadawatha.", lat: 6.988000, lng: 79.937241 },
+  { id: 2, name: "Makola", address: "329/3 Makola Rd, Kiribathgoda.", lat: 6.9789369, lng: 79.93827 },
+  { id: 3, name: "Ragama", address: "188/A Mahabage Road, Ragama.", lat: 7.027731, lng: 79.914352 },
+  { id: 4, name: "Rikillagaskada", address: "19, Makuruppa Road, Rikillagaskada.", lat: 7.146344, lng: 80.786652 },
+  { id: 5, name: "Deraniyagala", address: "256/2B, Sirisaranankara Mawatha, Deraniyagala.", lat: 6.929565, lng: 80.341515 },
+  { id: 6, name: "Welimada", address: "Ambagasdowa, Welimada.", lat: 6.927420, lng: 80.895561 },
+  { id: 7, name: "Menikhinna", address: "No.20, Narampanawa Road, Menikhinna.", lat: 7.320008, lng: 80.701759 },
+  { id: 8, name: "Kinniya", address: "No:236, Main Street, Kuttikkarach, Kinniya.", lat: 8.4833, lng: 81.2333 },
+  { id: 9, name: "Pottuvil", address: "Main Street, Pottuvil 04.", lat: 6.8814, lng: 81.8244 },
+  { id: 10, name: "Galaha", address: "No.149/01, Nillamba, Galaha.", lat: 7.1833, lng: 80.6833 },
+  { id: 11, name: "Negombo", address: "No:104/C, Chilaw Rd, Daluwakotuwa, Kochchikade.", lat: 7.2083, lng: 79.8358 },
+  { id: 12, name: "Maruthamunai", address: "Main Street, Maruthamunai, Periyaneelavanai – 02(M.D).", lat: 7.3833, lng: 81.8500 },
+  { id: 13, name: "Baddegama", address: "Hewagewatta, Baddegama Road, Gonapinuwala.", lat: 6.1167, lng: 80.1833 },
+  { id: 14, name: "Trincomalee", address: "No:45/10, Up Road, Selwanayagapuram, Trincomalee.", lat: 8.5667, lng: 81.2333 },
+  { id: 15, name: "Hatton", address: "No. 64 Dunbar Road, Hatton.", lat: 6.8914, lng: 80.5956 },
+  { id: 16, name: "Mannar", address: "Alakkadi Vely, Andankulam, Mannar.", lat: 8.9833, lng: 79.9000 },
+  { id: 17, name: "Anuradhapura", address: "Asoka Building, 1st Floor, Dahaiyagama Junction, Anuradhapura.", lat: 8.3114, lng: 80.4037 },
+  { id: 18, name: "Mihintale", address: "No:06, Pola Para, Mihintale.", lat: 8.3500, lng: 80.5000 },
+  { id: 19, name: "Pujapitiya", address: "No.254/B, Bokkawela Road, Pujapitiya.", lat: 7.3833, lng: 80.5667 },
+  { id: 20, name: "Kalutara", address: "No.75, Galle Road, Kalutara North.", lat: 6.5833, lng: 79.9647 },
 ];
-
 const Locations = () => {
+  const [showAll, setShowAll] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const initialLocations = 3;
+
+  const displayedLocations = showAll ? locations : locations.slice(0, initialLocations);
+
   return (
     <section className="max-w-7xl mx-auto py-12 px-6">
-      {/* Heading */}
+      <hr className="border-gray-300 mb-6" />
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-900 flex items-center">
-          <FaMapMarkerAlt className="text-red-500 mr-2" />
-          Our Locations
-        </h2>
-        <a href="#" className="text-gray-600 hover:text-gray-900">View All</a>
+        <h2 className="text-3xl font-semibold text-center flex-1 mb-6 rounded-md ">OUR LOCATIONS</h2>
+        {!showAll && (
+          <button onClick={() => setShowAll(true)} className="text-green-600 hover:text-green-800 font-semibold">
+            View All
+          </button>
+        )}
       </div>
-
-      {/* Location Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {locations.map((location) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {displayedLocations.map((location) => (
           <div
             key={location.id}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 group cursor-pointer relative overflow-hidden"
+            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer border-l-4 border-green-500"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-700 opacity-0 group-hover:opacity-20 transition duration-300"></div>
-            <h3 className="text-xl font-semibold text-gray-900">{location.name}</h3>
-            <p className="text-gray-600 mt-2">{location.address}</p>
-            <a
-              href={location.mapLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 text-green-600 font-medium hover:underline"
+            <h3 className="text-xl font-semibold text-green-700">{location.name}</h3>
+            <p className="text-gray-600">{location.address}</p>
+            <button
+              onClick={() => setSelectedLocation(location)}
+              className="mt-2 text-blue-500 hover:underline font-medium"
             >
-              View on Map →
-            </a>
+              View on Map
+            </button>
           </div>
         ))}
       </div>
-
-      {/* Google Map Embed */}
-      <div className="mt-12">
-        <iframe
-          className="w-full h-80 rounded-lg shadow-lg"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126741.41932224966!2d79.86415568524607!3d6.927078903292552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591b3d2076e3%3A0x6f8690aee17a0b6a!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2s!4v1633065891921!5m2!1sen!2s"
-          allowFullScreen=""
-          loading="lazy"
-        ></iframe>
-      </div>
+      {showAll && (
+        <div className="text-center mt-6">
+          <button onClick={() => setShowAll(false)} className="text-red-600 hover:text-red-800 font-semibold">
+            Show Less
+          </button>
+        </div>
+      )}
+      {selectedLocation && (
+        <div className="mt-10 w-full h-96 shadow-lg rounded-lg overflow-hidden">
+          <iframe
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            src={`https://www.google.com/maps?q=${selectedLocation.lat},${selectedLocation.lng}&output=embed`}
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
     </section>
   );
 };

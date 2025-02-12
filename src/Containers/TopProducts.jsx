@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import BrickBond from "../Assets/Brick-Bond.png";
+import BrickBond from "../Assets/Clay-plaster-300x300.jpeg";
 import WallPutty from "../Assets/Clay-putty.jpeg";
 
 const products = [
@@ -23,10 +23,10 @@ const products = [
   },
 ];
 
-const tabs = ["TOP"];
+const tabs = ["TOP PRODUCTS"];
 
 const TopProducts = () => {
-  const [activeTab, setActiveTab] = useState("TOP");
+  const [activeTab, setActiveTab] = useState("TOP PRODUCTS");
 
   return (
     <section className="max-w-7xl mx-auto py-10 px-4">
@@ -42,7 +42,6 @@ const TopProducts = () => {
             </button>
           ))}
         </div>
-        <button className="text-gray-500 hover:text-black">View All</button>
       </div>
 
       <Swiper
