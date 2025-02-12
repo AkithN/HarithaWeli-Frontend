@@ -101,7 +101,7 @@ const Cal = () => {
   };
 
   return (
-    <div className="p-8 max-w-4xl mx-auto bg-white mt-28 shadow-lg rounded-xl border border-gray-200">
+    <div className="p-8 max-w-4xl mx-auto bg-white mt-40 shadow-lg rounded-xl border border-gray-200">
       <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">📊 Product Calculator</h2>
 
       {/* Select Product */}
@@ -157,7 +157,7 @@ const Cal = () => {
           🏗 <span className="text-blue-600">Quantity:</span> {quantity}
         </div>
         <div className="text-xl font-semibold text-gray-900 mt-2">
-          💰 Total Price: <span className="text-blue-600">${totalPrice.toFixed(2)}</span>
+          💰 Total Price: <span className="text-blue-600">LKR {totalPrice.toFixed(2)}</span>
         </div>
       </div>
 

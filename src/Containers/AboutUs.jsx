@@ -1,8 +1,19 @@
-import React, { useState } from "react";
-import AboutImage from "../Assets/Aboutus.png";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination, Autoplay } from "swiper/modules";
+import AboutImage1 from "../Assets/working.jpg";
+import AboutImage2 from "../Assets/ciment1.jpg";
+import AboutImage3 from "../Assets/plan.jpg";
 
 const AboutUs = () => {
-  const [showMore, setShowMore] = useState(false);
+  const navigate = useNavigate();
+
+  const handleShowMore = () => {
+    navigate("/about");
+  };
 
   return (
     <section className="max-w-7xl mx-auto py-12 px-6">
@@ -11,47 +22,57 @@ const AboutUs = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-        <div className="lg:col-span-2 relative group">
-          <img 
-            src={AboutImage} 
-            alt="Sustainability Focus" 
-            className="w-full h-96 object-cover rounded-md shadow-lg transition-transform duration-300 group-hover:scale-105"
-          />
-          <span className="absolute bottom-3 left-3 bg-gray-800 text-white text-sm px-3 py-1 rounded-md opacity-75">
-            514 ✕ 400
-          </span>
+        <div className="lg:col-span-2 relative">
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000 }}
+            loop={true}
+            className="w-full h-96"
+          >
+            <SwiperSlide>
+              <img
+                src={AboutImage1}
+                alt="Sustainability 1"
+                className="w-full h-96 object-cover rounded-md shadow-lg"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src={AboutImage2}
+                alt="Sustainability 2"
+                className="w-full h-96 object-cover rounded-md shadow-lg"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src={AboutImage3}
+                alt="Sustainability 3"
+                className="w-full h-96 object-cover rounded-md shadow-lg"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
-        <div className="bg-white p-6 shadow-md rounded-md">
+        <div className="bg-white px-6 shadow-md rounded-md">
           <p className="text-gray-700 text-justify">
-            At CEEDCES Lanka Holdings, we want to ensure that we are responsible 
-            towards our community and the planet. Therefore, our aim is to offer 
-            products that are technologically improved, modern, cutting edge, wastage 
-            reduced and not only help our customers in saving money but offer great 
-            value for money they’ve spent.
+            At CEEDCES Lanka Holdings, we want to ensure that we are responsible
+            towards our community and the planet. Therefore, our aim is to offer
+            products that are technologically improved, modern, cutting edge,
+            wastage reduced and not only help our customers in saving money but
+            offer great value for money they’ve spent.We, as a company, are well
+            aware of the abuse and misuse of resources due to human activities
+            that have put our planet in a precarious situation. However, we are
+            taking small steps towards a big change by introducing eco-friendly
+            products and reducing our carbon footprint.
           </p>
 
-          {showMore && (
-            <p className="text-gray-700 mt-4 text-justify">
-              We, as a company, are well aware of the abuse and misuse of resources 
-              due to human activities that have put our planet in a precarious situation. 
-              However, we are taking small steps towards a big change by introducing 
-              eco-friendly products and reducing our carbon footprint.
-            </p>
-          )}
-
-          <button 
-            onClick={() => setShowMore(!showMore)}
+          <button
+            onClick={handleShowMore}
             className="mt-4 bg-green-500 text-white px-5 py-2 rounded-full hover:bg-green-600 transition"
           >
-            {showMore ? "SHOW LESS" : "READ MORE"}
+            SHOW MORE
           </button>
-          
-          <div className="w-full bg-gray-300 h-2 mt-4 rounded-full">
-            <div 
-              className={`h-2 bg-green-500 rounded-full transition-all duration-500 ${showMore ? "w-full" : "w-1/3"}`}
-            ></div>
-          </div>
         </div>
       </div>
     </section>
