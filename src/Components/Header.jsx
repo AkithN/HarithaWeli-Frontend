@@ -38,7 +38,7 @@ const HeroSection = () => {
   
 
   return (
-    <div className="relative lg:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-r from-green-100 via-green-250 to-green-00 mt-28">
+    <div className="relative lg:h-[65vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-r from-green-100 via-green-350 to-green-00 mt-28">
       {/* Animated Background */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 w-full h-full bg-opacity-30 backdrop-blur-lg" />
